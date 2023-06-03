@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact CCS Consulting Cooperative</title>
+  <style>
+    /* Add your custom CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .contact-form {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .form-input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 16px;
+    }
+
+    .form-submit {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 30px;
+      font-size: 16px;
+      text-decoration: none;
+      background-color: #333;
+      color: #fff;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .form-submit:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact CCS Consulting Cooperative</h1>
+    <p>Get in touch with us for your IT consultancy needs</p>
+    <form class="contact-form" action="mailto:hey@ccsconsulting.rocks" method="POST" enctype="text/plain">
+      <input class="form-input" type="text" name="name" placeholder="Your Name" required>
+      <input class="form-input" type="email" name="email" placeholder="Your Email" required>
+      <textarea class="form-input" name="message" rows="6" placeholder="Your Message" required></textarea>
+      <input class="form-submit" type="submit" value="Send Message">
+    </form>
+  </div>
+</body>
+</html>
