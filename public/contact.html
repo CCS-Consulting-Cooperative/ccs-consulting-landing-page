@@ -30,23 +30,9 @@
       line-height: 1.5;
     }
 
-    .contact-form {
+    .contact-link {
+      display: inline-block;
       margin-top: 20px;
-      text-align: center;
-    }
-
-    .form-input {
-      display: block;
-      margin: 10px auto;
-      padding: 10px;
-      width: 100%;
-      max-width: 300px;
-      font-size: 16px;
-    }
-
-    .form-submit {
-      display: block;
-      margin: 20px auto;
       padding: 12px 30px;
       font-size: 16px;
       text-decoration: none;
@@ -56,10 +42,35 @@
       transition: background-color 0.3s;
     }
 
-    .form-submit:hover {
+    .contact-link:hover {
       background-color: #555;
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var contactLink = document.querySelector('.contact-link');
+      var nameField = document.querySelector('input[name="name"]');
+      var emailField = document.querySelector('input[name="email"]');
+      var messageField = document.querySelector('textarea[name="message"]');
+
+      // Check if JavaScript is enabled
+      if (contactLink && nameField && emailField && messageField) {
+        // Update mailto link when form is submitted
+        contactLink.addEventListener('click', function(event) {
+          event.preventDefault();
+          var email = 'hey@ccsconsulting.rocks';
+          var subject = 'Contact Request';
+          var body = 'Hi CCS Consulting Cooperative,\n\n';
+          body += 'I would like to inquire about your IT consultancy services.\n\n';
+          body += 'Name: ' + encodeURIComponent(nameField.value) + '\n';
+          body += 'Email: ' + encodeURIComponent(emailField.value) + '\n';
+          body += 'Message: ' + encodeURIComponent(messageField.value);
+          this.href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+          this.click();
+        });
+      }
+    });
+  </script>
 </head>
 <body>
   <div class="container">
@@ -71,6 +82,7 @@
       <textarea class="form-input" name="message" rows="6" placeholder="Your Message" required></textarea>
       <input class="form-submit" type="submit" value="Send Message">
     </form>
+    <a class="contact-link" href="mailto:hey@ccsconsulting.rocks">Contact Us</a>
   </div>
 </body>
 </html>
