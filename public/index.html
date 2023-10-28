@@ -22,59 +22,104 @@
       to avoid connecting the SDK to running emulators.
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
+  </head>
   <style>
-    /* Add your custom CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
+    html, body {
+      height: 100%;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
+    .lens-flare-bg {
+      position: relative;
+      overflow: hidden;
     }
 
-    h1 {
-      color: #333;
+    .lens-flare-bg:before,
+    .lens-flare-bg:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
 
-    p {
-      color: #666;
-      font-size: 18px;
-      line-height: 1.5;
+    .lens-flare-bg:before {
+      background: radial-gradient(circle at 20% 20%, transparent, #44ff99 50%, transparent 70%);
+      opacity: 0.7;
+      filter: blur(5rem);
+      pointer-events: none;
+      transform: scale(1.2);
+      mix-blend-mode: overlay;
+      max-height: 100%;
+      height: 100%;
     }
 
-    .cta-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 30px;
-      font-size: 16px;
-      text-decoration: none;
-      background-color: #333;
-      color: #fff;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-
-    .cta-button:hover {
-      background-color: #555;
+    .lens-flare-bg:after {
+      background: radial-gradient(circle at 80% 80%, transparent, #44ff99 50%, transparent 70%);
+      opacity: 0.7;
+      filter: blur(5rem);
+      pointer-events: none;
+      transform: scale(1.2);
+      mix-blend-mode: overlay;
+      max-height: 100%;
+      height: 100%;
     }
   </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Welcome to CCS Consulting Cooperative</h1>
-    <p>Providing top-notch Software Engineering and Design services to businesses</p>
-    <p>An employee owned business, incorporated in the state of Minnesota under statute 308.</p>
-    <a class="cta-button" href="contact.html">Contact Us</a>
-    <a class="cta-button" href="https://github.com/CCS-Consulting-Cooperative/governing_documents" target="_blank">Bylaws</a>
+<body x-data="{ darkMode: true }" :class="{ 'bg-gray-100 lens-flare-bg': !darkMode, 'bg-gray-900 lens-flare-bg': darkMode }">
+  <!-- Header -->
+  <header class="text-white p-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <h1 class="text-4xl mb-4 font-semibold">CCS Consulting Cooperative</h1>
+      <!-- Theme Toggle -->
+      <button @click="darkMode = !darkMode" :class="{ 'bg-gray-300': darkMode, 'bg-gray-700': !darkMode }" class="text-black dark:text-white p-2 rounded">
+        <span x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
+      </button>
+    </div>
+  </header>
+
+    <div class="container mx-auto p-8">
+      <div class="lg:grid lg:grid-cols-2 gap-4">
+      <div class="col-span-full lg:col-span-1">
+        <p class="text-lg text-white mb-4 text-4xl">Providing top-notch Software Engineering and Design services to businesses</p>
+        <p class="text-lg text-white mb-4 text-4xl">An employee owned business, incorporated in the state of Minnesota under statute 308.</p>
+        <div class="mt-6 space-x-4">
+          <a href="contact.html" class="bg-blue-500 hover:bg-blue-600 text-white rounded py-2 px-6">Contact Us</a>
+          <a href="https://github.com/CCS-Consulting-Cooperative/governing_documents" target="_blank" class="bg-gray-500 hover:bg-gray-600 text-white rounded py-2 px-6">Bylaws</a>
+        </div>
+      </div>
+      <div class="col-span-full lg:col-span-1 content-center">
+        <div class="flex items-center justify-center w-full h-[300rem] bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
+            <svg class="w-full h-full text-gray-200 dark:text-gray-600"
+                 aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+            </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mx-auto p-8">
+    <div class="bg-opacity-50 bg-white p-4 rounded-md lg:grid lg:grid-cols-2 gap-4">
+    <!-- First Card -->
+    <div class="bg-opacity-50 bg-white rounded p-4 col-span-full lg:col-span-1">
+      <h2 class="text-xl font-semibold">Card 1</h2>
+      <p class="mt-2">This is the first card.</p>
+    </div>
+
+    <!-- Second Card -->
+    <div class="bg-opacity-50 bg-white rounded p-4 col-span-full lg:col-span-1">
+      <h2 class="text-xl font-semibold">Card 2</h2>
+      <p class="mt-2">This is the second card.</p>
+    </div>
   </div>
 
+</div>
+
+    <!-- Your Firebase and custom JavaScript here -->
+  </body>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const loadEl = document.querySelector('#load');
