@@ -8,6 +8,11 @@ python -m http.server 8080
 npx http-server -o ./public
 ```
 
+# access in browser
+```
+http://localhost:8080/public/
+```
+
 # deploy
 
 ```
